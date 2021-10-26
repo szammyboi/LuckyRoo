@@ -20,9 +20,12 @@
 */
 
 namespace LCKYROO {
-	typedef enum {
-		// DIGITAl -> get_digital();
-	} input_functions;
+	enum class State {
+		PRESSED,
+		RELEASED,
+		HOLDING,
+		IDLE
+	};
 
 
 	class Event {
@@ -37,27 +40,32 @@ namespace LCKYROO {
 		void(*e_Callback)();
 	};
 
-	class BinaryEvent : public Event {
+	class StateMachine {
 	public:
-		BinaryEvent() = default;
-		~BinaryEvent() = default;
+		StateMachine() = default;
+		~StateMachine() = default;
 	private:
+		std::int32_t s_Last;
+		State s_State;
+	};
+
+	class Toggle : public StateMachine {
 
 	};
 
-	class AnalogEvent : public Event {
-	public:
-		AnalogEvent() = default;
-		~AnalogEvent() = default;
-	private:
+	class Hold : public StateMachine {
 
 	};
 
-	class TouchEvent : public Event {
-	public:
-		TouchEvent() = default;
-		~TouchEvent() = default;
-	private:
+	class Press : public StateMachine {
+
+	};
+
+	class Release : public StateMachine {
+
+	};
+
+	class ValueThreshold : public StateMachine {
 
 	};
 
