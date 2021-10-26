@@ -44,6 +44,8 @@ namespace LCKYROO {
 	public:
 		StateMachine() = default;
 		~StateMachine() = default;
+
+		virtual void Update();
 	private:
 		std::int32_t s_Last;
 		State s_State;
